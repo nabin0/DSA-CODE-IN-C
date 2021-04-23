@@ -126,7 +126,7 @@ void runSimpleCalc(SimpleCalculator obj)
 int main()
 {
 
-    cout <<endl<< "*****************CALCULATOR**************" << endl<<endl;
+    cout <<endl<< "******CALCULATOR*****" << endl<<endl;
     while (true)
     {
         cout << "Choose The Operation You Want To Perform:" << endl
@@ -143,26 +143,22 @@ int main()
              << "       '7' : For log Value Of a Number"<<endl;
         char op;
         cin >> op;
-        char sciArr[] = {'1', '2', '3', '4', '5', '6', '7'};
-        char simpleArr[] = {'+', '-', '*', '/'};
 
-        for (int i = 0; i < (sizeof(sciArr) / sizeof(sciArr[0])); i++)
-        {
-            if (op == sciArr[i])
+            if (op == '1' || op == '2' || op == '3' || op == '4' || op == '5' || op == '6' || op == '7')
             {
                 SciCalculator obj(op);
                 obj.setData();
                 obj.funcHandler();
             }
 
-            else if (op == simpleArr[i])
+            else if (op == '+' || op == '-' || op == '*' || op == '/' )
             {
                 SimpleCalculator ob1(op);
                 ob1.set_data();
                 runSimpleCalc(ob1);
             }
-        }
-        cout << "Enter q to quit or c to continue: " << endl;
+        
+        cout<<endl << "Enter q to quit or c to continue: " << endl;
         char cmd;
         cin >> cmd;
         if (cmd == 'q')
