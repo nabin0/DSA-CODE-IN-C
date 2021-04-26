@@ -26,31 +26,33 @@ int isFull(struct stack *p)
     return 0;
 }
 
-void push(struct stack *p, int val)
+int push(struct stack *p, int val)
 {
- if (isFull(p))
- {
-    printf("Stack Overflow cannot push the value %d", val);
-    
- }
- else{
-     p->top++;
-     p->arr[p->top] = val;
- }
+    if (isFull(p))
+    {
+        printf("Stack Overflow cannot push the value %d", val);
+        return -1;
+    }
+    else
+    {
+        p->top++;
+        p->arr[p->top] = val;
+        return val;
+    }
 }
 
 int pop(struct stack *p)
 {
- if (isEmpty(p))
- {
-    printf("Stack Underflow cannot pop");
-    
- }
- else{
-     int val = p->top;
-     p->top--;
-     return val;
- }
+    if (isEmpty(p))
+    {
+        printf("Stack Underflow cannot pop");
+    }
+    else
+    {
+        int val = p->arr[p->top];
+        p->top--;
+        return val;
+    }
 }
 int main()
 {
@@ -58,16 +60,30 @@ int main()
     ptr->size = 6;
     ptr->top = -1;
     ptr->arr = (int *)malloc(ptr->size * sizeof(int));
-    printf("Stack created successfully.\n");
+    printf("\n\n\t\t------Stack is created successfully.-------\n\n");
+
+    printf("------BeFore Push Operation.-------\n");
     printf("Before push Operations: Empty %d \n", isEmpty(ptr));
     printf("Before push Operations: Full %d \n\n", isFull(ptr));
-    push(ptr, 162);
-    push(ptr, 1132);
+
+    printf("-----Appplying Push operation.-------\n");
+    printf("%d is pushed into the stack.\n", push(ptr, 162));
+    printf("%d is pushed into the stack.\n", push(ptr, 1132));
+    printf("%d is pushed into the stack.\n\n", push(ptr, 76));
+
+    printf("------After Push Operation.-------\n");
     printf("After push Operations: Empty %d \n", isEmpty(ptr));
     printf("After push Operations: Full %d \n\n\n", isFull(ptr));
-       printf("Before pop Operations: Empty %d \n", isEmpty(ptr));
-    printf("Before pop Operations: Full %d \n", isFull(ptr));
-    pop(ptr);
+    printf("------BeFore POP Operation.-------\n");
+    printf("Before pop Operations: Empty %d \n", isEmpty(ptr));
+    printf("Before pop Operations: Full %d \n\n", isFull(ptr));
+
+    printf("------Applying Pop Operation.-------\n");
+    printf("%d is poped out.\n", pop(ptr));
+    printf("%d is poped out.\n", pop(ptr));
+    printf("%d is poped out.\n\n", pop(ptr));
+
+    printf("------After pop Operation.-------\n");
     printf("\nAfter Operations: Empty %d \n", isEmpty(ptr));
     printf("After Operations: Full %d \n", isFull(ptr));
 
