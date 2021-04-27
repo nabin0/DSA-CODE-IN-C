@@ -12,7 +12,7 @@ void linkedListTraversel(struct Node *ptr)
     printf("\nThe Elements in the list are: \n");
     while (ptr != NULL)
     {
-        printf("The valueis: %d\n", ptr->data);
+        printf(" %d\n", ptr->data);
         ptr = ptr->next;
     }
 }
@@ -70,6 +70,43 @@ int pop(struct Node **top)
     }
 }
 
+int peek(struct Node *top, int position)
+{
+    struct Node *ptr = top;
+    for (int i = 0; (i < position - 1 && ptr != NULL); i++)
+    {
+        ptr = ptr->next;
+    }
+    if (ptr != NULL)
+    {
+        return ptr->data;
+    }
+    return -1;
+}
+
+int stackTop(struct Node *top)
+{
+    if (top != NULL)
+    {
+        return top->data;
+    }
+    return -1;
+}
+int stackBottom(struct Node *top)
+{
+    struct Node *a = top;
+    while (a->next != NULL)
+    {
+        a = a->next;
+    }
+    if (a == NULL)
+    {
+        return -1;
+    }
+
+    return a->data;
+}
+
 int main()
 {
     struct Node *top = NULL;
@@ -79,5 +116,9 @@ int main()
     linkedListTraversel(top);
     printf("\n%d is poped.\n", pop(&top));
     linkedListTraversel(top);
+    printf("\nThe element at position %d is : %d", 2, peek(top, 2));
+    printf("\n\nThe top element is : %d", stackTop(top));
+    printf("\n\nThe Bottom element is : %d", stackBottom(top));
+
     return 0;
 }
