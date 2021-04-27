@@ -54,10 +54,34 @@ int pop(struct stack *p)
         return val;
     }
 }
+
+int peek(struct stack *p, int index)
+{
+    int arrPos = p->top - index + 1;
+    if (arrPos < 0)
+    {
+        printf("Invalid Position");
+        return -1;
+    }
+    else
+    {
+
+        return p->arr[arrPos];
+    }
+}
+
+int stackTop(struct stack *p)
+{
+    return p->arr[p->top];
+}
+int stackBottom(struct stack *p)
+{
+    return p->arr[0];
+}
 int main()
 {
     struct stack *ptr = (struct stack *)malloc(sizeof(struct stack));
-    ptr->size = 6;
+    ptr->size = 100;
     ptr->top = -1;
     ptr->arr = (int *)malloc(ptr->size * sizeof(int));
     printf("\n\n\t\t------Stack is created successfully.-------\n\n");
@@ -69,7 +93,10 @@ int main()
     printf("-----Appplying Push operation.-------\n");
     printf("%d is pushed into the stack.\n", push(ptr, 162));
     printf("%d is pushed into the stack.\n", push(ptr, 1132));
-    printf("%d is pushed into the stack.\n\n", push(ptr, 76));
+    printf("%d is pushed into the stack.\n", push(ptr, 756));
+    printf("%d is pushed into the stack.\n", push(ptr, 676));
+    printf("%d is pushed into the stack.\n", push(ptr, 346));
+    printf("%d is pushed into the stack.\n\n", push(ptr, 121));
 
     printf("------After Push Operation.-------\n");
     printf("After push Operations: Empty %d \n", isEmpty(ptr));
@@ -85,7 +112,18 @@ int main()
 
     printf("------After pop Operation.-------\n");
     printf("\nAfter Operations: Empty %d \n", isEmpty(ptr));
-    printf("After Operations: Full %d \n", isFull(ptr));
+    printf("After Operations: Full %d \n\n", isFull(ptr));
 
+    printf("------After peek Operation.-------\n");
+    for (int j = 1; j < ptr->top + 2; j++)
+    {
+        printf("\nAfter Operations element at %d is :  %d ", j, peek(ptr, j));
+    }
+
+    printf("\n\n------Top Element-------\n");
+    printf("The top element of stack is: %d", stackTop(ptr));
+
+    printf("\n\n------After peek Operation.-------\n");
+    printf("The top element of stack is: %d", stackBottom(ptr));
     return 0;
 }
