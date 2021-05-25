@@ -52,7 +52,7 @@ void printArr(int arr[], int size)
 
 int main()
 {
-    int arr[] = {12, 34, 65, 3, 87, 33};
+    int arr[] = {12, 34, 65, 3, 87, 33,13,9087,001};
     int size_of_arr = sizeof(arr) / sizeof(int);
     int start = 0;
     int end = size_of_arr - 1;
