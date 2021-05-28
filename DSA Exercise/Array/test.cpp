@@ -1,16 +1,34 @@
-#include <iostream>
+#include<iostream>
+#include<vector>
 using namespace std;
 
-void printArr(int arr[])
-{
+void sortArr(int arr[],int size, int min, int max ){
+    int n = max - min +1;
 
-    for (int i = 0; i < 5; i++)
-        cout << arr[i] << " ";
+    vector<int> v(n, 0);
+    for (int i = 0; i < size; i++)
+    v[arr[i] - min]++;
+
+    for (int i=0; i<n; i++)
+	for (int j=0; j < v[i]; j++)
+	cout << (i + min) << " ";
+
+    cout<<endl;
+
 }
 
-int main()
-{
-    int arr[] = {1, 4, 5, 3, 9};
-    printArr(arr);
-    return 0;
+int main(){
+
+int arr[] = {1,2,0};
+int min = 0, max = 2;
+int size = sizeof(arr)/sizeof(int);
+cout<<"Calling function"<<endl;
+sortArr(arr,size,min,max);
+cout<<"Code Executed"<<endl;
+return 0;
 }
+
+
+
+
+
