@@ -33,7 +33,7 @@ void sortArr(int arr[],int size, int min, int max ){
 
 int main(){
 
-int arr[] = {11,7,10,23,10};
+int arr[] = {0,1,1,2,2,2,2,1,1,0};
 int min = 0, max = 23;
 int size = sizeof(arr)/sizeof(int);
 cout<<"Calling function"<<endl;
